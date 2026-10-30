@@ -1,13 +1,17 @@
 package domain.model;
 
 import domain.service.PayrollCalculator;
-import domain.vo.MandatoryDeductions;
+
 import domain.vo.Money;
 import domain.vo.Payroll;
+import domain.vo.Percentage;
+
 import java.util.Objects;
 import java.util.UUID;
 
 public final class Employee {
+
+    private static final Percentage PENSION_RATE = new Percentage(4);
 
     private final UUID id;
     private final String name;
@@ -19,14 +23,14 @@ public final class Employee {
         this.calculator = Objects.requireNonNull(calculator, "El calculador no puede ser nulo.");
     }
 
-    public Payroll generatePayroll(MandatoryDeductions deductions) {
+    public Payroll generatePayroll() {
         Money gross = calculator.calculateGrossSalary();
         Money bonuses = calculator.calculateBonuses();
         Money benefits = calculator.calculateBenefits();
 
-        Money deductionAmount = deductions.calculateOn(gross.add(bonuses));
+        Money pensionDeduction = PENSION_RATE.applyTo(gross.add(bonuses));
 
-        return Payroll.create(id, gross, bonuses, benefits, deductionAmount);
+        return Payroll.create(id, gross, bonuses, benefits, pensionDeduction);
     }
 
     public UUID id() { return id; }
