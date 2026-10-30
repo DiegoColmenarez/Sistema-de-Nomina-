@@ -11,7 +11,6 @@ public final class HourlyPayrollCalculator implements PayrollCalculator {
 
     private static final BigDecimal OVERTIME_MULTIPLIER = new BigDecimal("1.5");
     private static final Percentage SAVINGS_FUND_RATE = new Percentage(2);
-
     private final Money hourlyRate;
     private final HoursWorked hoursWorked;
     private final Seniority seniority;

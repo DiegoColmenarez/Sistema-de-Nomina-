@@ -26,6 +26,10 @@ public record Sales(BigDecimal amount) {
         return this.amount.compareTo(EXTRA_BONUS_THRESHOLD) > 0;
     }
 
+    public Money asMoney() {
+        return new Money(amount);
+    }
+
     private void notNull(BigDecimal amount){
         if (amount == null) {
             throw InvalidSalesException.nullValue();
