@@ -60,4 +60,9 @@ public record Money(BigDecimal amount) implements Comparable<Money> {
     public int compareTo(Money other) {
         return this.amount.compareTo(other.amount());
     }
+
+    @Override
+    public String toString() {
+        return "$" + amount.toString();
+    }
 }
