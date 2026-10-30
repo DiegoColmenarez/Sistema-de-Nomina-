@@ -1,7 +1,6 @@
 package domain.vo;
 
 import domain.exceptions.InvalidSalesException;
-
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
