@@ -13,4 +13,8 @@ public class InvalidMoneyException  extends  DomainException{
     public static InvalidMoneyException nullAmount() {
         return new InvalidMoneyException(NULL_AMOUNT_MSG);
     }
+
+    public static InvalidMoneyException negativeAmount() {
+        return new InvalidMoneyException(NEGATIVE_AMOUNT_MSG);
+    }
 }
