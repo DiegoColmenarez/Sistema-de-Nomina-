@@ -22,4 +22,7 @@ public class InvalidMoneyException  extends  DomainException{
         return new InvalidMoneyException(NEGATIVE_SUBTRACTION_MSG);
     }
 
+    public static InvalidMoneyException negativeMultiplier() {
+        return new InvalidMoneyException(NEGATIVE_MULTIPLIER_MSG);
+    }
 }
