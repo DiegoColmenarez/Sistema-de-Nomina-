@@ -17,4 +17,9 @@ public class InvalidMoneyException  extends  DomainException{
     public static InvalidMoneyException negativeAmount() {
         return new InvalidMoneyException(NEGATIVE_AMOUNT_MSG);
     }
+
+    public static InvalidMoneyException negativeSubtraction() {
+        return new InvalidMoneyException(NEGATIVE_SUBTRACTION_MSG);
+    }
+
 }
