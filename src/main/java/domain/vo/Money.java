@@ -33,11 +33,11 @@ public record Money(BigDecimal amount) implements Comparable<Money> {
         return new Money(result);
     }
 
-    public Money multiply(double multiplier) {
-        if (multiplier < 0) {
+    public Money multiply(BigDecimal multiplier) {
+        if (multiplier.signum() < 0) {
             throw InvalidMoneyException.negativeMultiplier();
         }
-        return new Money(this.amount.multiply(BigDecimal.valueOf(multiplier)));
+        return new Money(this.amount.multiply(multiplier));
     }
 
     public boolean isGreaterThan(Money other) {
