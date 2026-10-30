@@ -3,7 +3,6 @@ package domain.service;
 import domain.vo.Money;
 import domain.vo.Percentage;
 import domain.vo.Sales;
-
 import java.util.Objects;
 
 public final class CommissionPayrollCalculator implements PayrollCalculator {
