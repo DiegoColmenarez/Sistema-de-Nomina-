@@ -7,10 +7,10 @@ public record HoursWorked(int hours) {
     private static final int LIMITE_HORAS_NORMALES = 40;
 
     public HoursWorked {
-        notNegatives((short) hours);
+        notNegatives(hours);
     }
 
-    private void notNegatives(short hours){
+    private void notNegatives(int hours){
         if (hours < 0) {
             throw InvalidHorasTrabajadasException.negativeValue();
         }
