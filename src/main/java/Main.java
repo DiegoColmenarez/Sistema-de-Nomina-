@@ -1,5 +1,3 @@
-package infrastructure;
-
 import application.factory.CommissionCalculatorFactory;
 import application.factory.HourlyCalculatorFactory;
 import application.factory.PayrollCalculatorRegistry;
