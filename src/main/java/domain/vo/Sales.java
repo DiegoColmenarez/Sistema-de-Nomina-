@@ -22,7 +22,7 @@ public record Sales(BigDecimal amount) {
         this(new BigDecimal(amount));
     }
 
-    public boolean isEligibleForExtraBonus() {
+    public boolean isEligibleForCommission() {
         return this.amount.compareTo(EXTRA_BONUS_THRESHOLD) > 0;
     }
 
