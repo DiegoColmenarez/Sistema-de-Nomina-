@@ -1,14 +1,30 @@
 package application.factory;
 
-import application.data.PayrollData;
-import application.data.PayrollField;
-import application.model.EmployeeType;
-import domain.service.PayrollCalculator;
+import application.dto.*;
+import domain.service.*;
+import domain.vo.*;
 
-import java.util.List;
+public final class PayrollCalculatorFactory {
 
-public interface PayrollCalculatorFactory {
-    EmployeeType supportedType();
-    List<PayrollField> requiredFields();
-    PayrollCalculator create(PayrollData data);
+    public PayrollCalculator create(EmployeeInput input) {
+        return switch (input) {
+            case SalariedInput i -> new SalariedPayrollCalculator(
+                    new Money(i.monthlySalary()),
+                    new Seniority((short) i.seniorityYears()));
+
+            case HourlyInput i -> new HourlyPayrollCalculator(
+                    new Money(i.hourlyRate()),
+                    new HoursWorked(i.hoursWorked()),
+                    new Seniority((short) i.seniorityYears()),
+                    i.acceptsSavingsFund());
+
+            case CommissionInput i -> new CommissionPayrollCalculator(
+                    new Money(i.baseSalary()),
+                    new Sales(i.sales()),
+                    new Percentage(i.commissionRate()));
+
+            case TemporaryInput i -> new TemporaryPayrollCalculator(
+                    new Money(i.monthlySalary()));
+        };
+    }
 }
