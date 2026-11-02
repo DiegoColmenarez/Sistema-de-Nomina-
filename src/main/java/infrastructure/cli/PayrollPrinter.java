@@ -19,6 +19,9 @@ final class PayrollPrinter {
     void printRequiredData(EmployeeRecord employee, List<PayrollField> fields) {
         System.out.printf("%n=== %s - Empleado %s ===%n", employee.name(), employee.type().label());
         System.out.println("Datos requeridos:");
+        if (fields.isEmpty()) {
+            System.out.println(" Este tipo de empleado no requiere datos adicionales.");
+        }
         fields.forEach(field -> System.out.println(" - " + field.label()));
         System.out.println();
     }
