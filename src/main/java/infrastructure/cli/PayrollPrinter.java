@@ -1,42 +1,28 @@
 package infrastructure.cli;
 
-import application.data.PayrollField;
-import application.model.EmployeeRecord;
-import domain.vo.Payroll;
-
-import java.util.List;
+import application.dto.PayrollResult;
 
 final class PayrollPrinter {
 
-    void printEmployees(List<EmployeeRecord> employees) {
-        System.out.println("\n=== EMPLEADOS ===");
-        for (int i = 0; i < employees.size(); i++) {
-            EmployeeRecord employee = employees.get(i);
-            System.out.printf("%d. %s (%s)%n", i + 1, employee.name(), employee.type().label());
-        }
+    void printMenu() {
+        System.out.println("\n=== SISTEMA DE NÓMINA ===");
+        System.out.println("1. Empleado Asalariado");
+        System.out.println("2. Empleado por Horas");
+        System.out.println("3. Empleado por Comisión");
+        System.out.println("4. Empleado Temporal");
+        System.out.println("0. Salir");
     }
 
-    void printRequiredData(EmployeeRecord employee, List<PayrollField> fields) {
-        System.out.printf("%n=== %s - Empleado %s ===%n", employee.name(), employee.type().label());
-        System.out.println("Datos requeridos:");
-        fields.forEach(field -> System.out.println(" - " + field.label()));
-        System.out.println();
-    }
-
-    void printPayroll(EmployeeRecord employee, Payroll payroll) {
-        System.out.printf("%n--- Nómina de %s ---%n", employee.name());
-        System.out.println("Salario bruto: " + payroll.gross());
-        System.out.println("Bonos:         " + payroll.bonuses());
-        System.out.println("Beneficios:    " + payroll.benefits());
-        System.out.println("Deducciones:   " + payroll.deductions());
-        System.out.println("Salario neto:  " + payroll.net());
+    void printPayroll(PayrollResult result) {
+        System.out.printf("%n--- Nómina de %s ---%n", result.employeeName());
+        System.out.println("Salario bruto: " + result.gross());
+        System.out.println("Bonos:         " + result.bonuses());
+        System.out.println("Beneficios:    " + result.benefits());
+        System.out.println("Deducciones:   " + result.deductions());
+        System.out.println("Salario neto:  " + result.net());
     }
 
     void printError(String message) {
-        System.out.println("Dato inválido: " + message);
-    }
-
-    void printInvalidOption() {
-        System.out.println("Opción no válida.");
+        System.out.println("Error: " + message);
     }
 }
