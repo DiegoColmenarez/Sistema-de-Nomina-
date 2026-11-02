@@ -27,7 +27,6 @@ El alcance de este repositorio se centra exclusivamente en la lógica de liquida
 Para mantener este archivo conciso, el detalle técnico, arquitectónico y metodológico se encuentra alojado en el directorio [`/docs`](./docs), donde podrás consultar:
 
 - **Especificación de Requisitos (SRS):** Detalle de las reglas de negocio y casos de uso.
-- **Decisiones de Arquitectura (ADR):** Justificación técnica del diseño en capas y patrones implementados.
 - **Metodología de Trabajo:** Organización del equipo (CIPAS), flujo de ramas y tablero Kanban.
 
 ## Requisitos Previos y Ejecución
