@@ -12,7 +12,6 @@ import java.util.List;
 
 public final class SalariedCalculatorFactory implements PayrollCalculatorFactory {
 
-    private static final String MONTHLY_SALARY = "monthlySalary";
     private static final String SENIORITY = "seniorityYears";
 
     @Override
@@ -22,15 +21,13 @@ public final class SalariedCalculatorFactory implements PayrollCalculatorFactory
 
     @Override
     public List<PayrollField> requiredFields() {
-        return List.of(
-                new PayrollField(MONTHLY_SALARY, "Salario mensual", FieldKind.NUMBER),
-                new PayrollField(SENIORITY, "Años de antigüedad", FieldKind.NUMBER));
+        return List.of(new PayrollField(SENIORITY, "Años de antigüedad", FieldKind.NUMBER));
     }
 
     @Override
     public PayrollCalculator create(PayrollData data) {
         return new SalariedPayrollCalculator(
-                data.money(MONTHLY_SALARY),
+                CompanyRates.BASE_SALARY,
                 new Seniority(data.shortValue(SENIORITY)));
     }
 }
