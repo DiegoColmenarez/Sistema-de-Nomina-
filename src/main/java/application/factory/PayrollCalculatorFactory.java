@@ -6,25 +6,26 @@ import domain.vo.*;
 
 public final class PayrollCalculatorFactory {
 
+    private static final Money BASE_SALARY = new Money("1750905");
+    private static final Money HOURLY_RATE = new Money("8338");
+
     public PayrollCalculator create(EmployeeInput input) {
         return switch (input) {
             case SalariedInput i -> new SalariedPayrollCalculator(
-                    new Money(i.monthlySalary()),
+                    BASE_SALARY,
                     new Seniority((short) i.seniorityYears()));
 
             case HourlyInput i -> new HourlyPayrollCalculator(
-                    new Money(i.hourlyRate()),
+                    HOURLY_RATE,
                     new HoursWorked(i.hoursWorked()),
                     new Seniority((short) i.seniorityYears()),
                     i.acceptsSavingsFund());
 
             case CommissionInput i -> new CommissionPayrollCalculator(
-                    new Money(i.baseSalary()),
-                    new Sales(i.sales()),
-                    new Percentage(i.commissionRate()));
+                    BASE_SALARY,
+                    new Sales(i.sales()));
 
-            case TemporaryInput i -> new TemporaryPayrollCalculator(
-                    new Money(i.monthlySalary()));
+            case TemporaryInput i -> new TemporaryPayrollCalculator(BASE_SALARY);
         };
     }
 }

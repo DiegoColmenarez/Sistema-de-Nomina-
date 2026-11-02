@@ -6,7 +6,7 @@ import java.math.RoundingMode;
 
 public record Sales(BigDecimal amount) {
 
-    private static final BigDecimal EXTRA_BONUS_THRESHOLD = new BigDecimal("20000000");
+    private static final BigDecimal COMMISSION_THRESHOLD = new BigDecimal("20000000");
 
     public Sales {
         notNull(amount);
@@ -23,7 +23,7 @@ public record Sales(BigDecimal amount) {
     }
 
     public boolean isEligibleForCommission() {
-        return this.amount.compareTo(EXTRA_BONUS_THRESHOLD) > 0;
+        return this.amount.compareTo(COMMISSION_THRESHOLD) > 0;
     }
 
     public Money asMoney() {
