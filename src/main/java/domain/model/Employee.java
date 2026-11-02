@@ -28,7 +28,7 @@ public final class Employee {
         Money bonuses = calculator.calculateBonuses();
         Money benefits = calculator.calculateBenefits();
 
-        Money pensionDeduction = PENSION_RATE.applyTo(gross.add(bonuses));
+        Money pensionDeduction = PENSION_RATE.applyTo(gross);
 
         return Payroll.create(id, gross, bonuses, benefits, pensionDeduction);
     }
