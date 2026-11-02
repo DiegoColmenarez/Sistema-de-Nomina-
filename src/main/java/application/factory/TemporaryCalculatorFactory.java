@@ -1,6 +1,5 @@
 package application.factory;
 
-import application.data.FieldKind;
 import application.data.PayrollData;
 import application.data.PayrollField;
 import application.model.EmployeeType;
@@ -11,8 +10,6 @@ import java.util.List;
 
 public final class TemporaryCalculatorFactory implements PayrollCalculatorFactory {
 
-    private static final String MONTHLY_SALARY = "monthlySalary";
-
     @Override
     public EmployeeType supportedType() {
         return EmployeeType.TEMPORARY;
@@ -20,11 +17,11 @@ public final class TemporaryCalculatorFactory implements PayrollCalculatorFactor
 
     @Override
     public List<PayrollField> requiredFields() {
-        return List.of(new PayrollField(MONTHLY_SALARY, "Salario mensual", FieldKind.NUMBER));
+        return List.of();
     }
 
     @Override
     public PayrollCalculator create(PayrollData data) {
-        return new TemporaryPayrollCalculator(data.money(MONTHLY_SALARY));
+        return new TemporaryPayrollCalculator(CompanyRates.BASE_SALARY);
     }
 }
