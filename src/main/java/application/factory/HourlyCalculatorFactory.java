@@ -13,7 +13,6 @@ import java.util.List;
 
 public final class HourlyCalculatorFactory implements PayrollCalculatorFactory {
 
-    private static final String HOURLY_RATE = "hourlyRate";
     private static final String HOURS_WORKED = "hoursWorked";
     private static final String SENIORITY = "seniorityYears";
     private static final String ACCEPTS_SAVINGS_FUND = "acceptsSavingsFund";
@@ -26,7 +25,6 @@ public final class HourlyCalculatorFactory implements PayrollCalculatorFactory {
     @Override
     public List<PayrollField> requiredFields() {
         return List.of(
-                new PayrollField(HOURLY_RATE, "Tarifa por hora", FieldKind.NUMBER),
                 new PayrollField(HOURS_WORKED, "Horas trabajadas", FieldKind.NUMBER),
                 new PayrollField(SENIORITY, "Años de antigüedad", FieldKind.NUMBER),
                 new PayrollField(ACCEPTS_SAVINGS_FUND, "¿Acepta el fondo de ahorro?", FieldKind.YES_NO));
@@ -35,7 +33,7 @@ public final class HourlyCalculatorFactory implements PayrollCalculatorFactory {
     @Override
     public PayrollCalculator create(PayrollData data) {
         return new HourlyPayrollCalculator(
-                data.money(HOURLY_RATE),
+                CompanyRates.HOURLY_RATE,
                 new HoursWorked(data.integer(HOURS_WORKED)),
                 new Seniority(data.shortValue(SENIORITY)),
                 data.yesNo(ACCEPTS_SAVINGS_FUND));
