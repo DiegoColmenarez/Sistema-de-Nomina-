@@ -1,6 +1,6 @@
 package domain.vo;
 
-import domain.exceptions.InvalidHorasTrabajadasException;
+import domain.exceptions.InvalidHoursWorkedException;
 
 public record HoursWorked(int hours) {
 
@@ -12,7 +12,7 @@ public record HoursWorked(int hours) {
 
     private void notNegatives(int hours){
         if (hours < 0) {
-            throw InvalidHorasTrabajadasException.negativeValue();
+            throw InvalidHoursWorkedException.negativeValue();
         }
     }
 
