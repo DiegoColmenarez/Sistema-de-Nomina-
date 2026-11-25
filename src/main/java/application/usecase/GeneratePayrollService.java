@@ -1,6 +1,6 @@
 package application.usecase;
 
-import application.dto.EmployeeInput;
+import application.dto.EmployeeContract;
 import application.dto.PayrollResult;
 import application.factory.PayrollCalculatorFactory;
 import domain.model.Employee;
@@ -17,7 +17,7 @@ public final class GeneratePayrollService implements GeneratePayrollUseCase {
     }
 
     @Override
-    public PayrollResult execute(EmployeeInput input) {
+    public PayrollResult execute(EmployeeContract input) {
         Employee employee = new Employee(UUID.randomUUID(), input.name(), factory.create(input));
         Payroll payroll = employee.generatePayroll();
 
