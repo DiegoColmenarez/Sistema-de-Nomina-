@@ -1,6 +1,6 @@
 package domain.vo;
 
-import domain.exceptions.InvalidHorasTrabajadasException;
+import domain.exceptions.InvalidHoursWorkedException;
 import domain.exceptions.InvalidPayrollException;
 import domain.exceptions.InvalidSalesException;
 import domain.exceptions.InvalidSeniorityException;
@@ -14,7 +14,7 @@ class BusinessValidationsTest {
 
     @Test
     void lasHorasTrabajadasNoPuedenSerNegativas() {
-        assertThrows(InvalidHorasTrabajadasException.class, () -> new HoursWorked(-1));
+        assertThrows(InvalidHoursWorkedException.class, () -> new HoursWorked(-1));
     }
 
     @Test
