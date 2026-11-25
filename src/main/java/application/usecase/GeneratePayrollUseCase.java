@@ -1,8 +1,8 @@
 package application.usecase;
 
-import application.dto.EmployeeInput;
 import application.dto.PayrollResult;
+import application.dto.command.GeneratePayrollCommand;
 
 public interface GeneratePayrollUseCase {
-    PayrollResult execute(EmployeeInput input);
+    PayrollResult execute(GeneratePayrollCommand command);
 }
