@@ -1,9 +1,10 @@
 package domain.vo;
 
-import domain.exceptions.InvalidHoursWorkedException;
-import domain.exceptions.InvalidPayrollException;
-import domain.exceptions.InvalidSalesException;
-import domain.exceptions.InvalidSeniorityException;
+import com.nomina.domain.exceptions.InvalidHoursWorkedException;
+import com.nomina.domain.exceptions.InvalidPayrollException;
+import com.nomina.domain.exceptions.InvalidSalesException;
+import com.nomina.domain.exceptions.InvalidSeniorityException;
+import com.nomina.domain.vo.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.UUID;

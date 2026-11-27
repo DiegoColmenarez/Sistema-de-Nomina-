@@ -1,7 +1,8 @@
 package domain.service;
 
-import domain.vo.Money;
-import domain.vo.Sales;
+import com.nomina.domain.service.CommissionPayrollCalculator;
+import com.nomina.domain.vo.Money;
+import com.nomina.domain.vo.Sales;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
