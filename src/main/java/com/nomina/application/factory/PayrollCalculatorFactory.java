@@ -1,6 +1,5 @@
 package com.nomina.application.factory;
 
-import application.dto.*;
 import com.nomina.application.dto.*;
 import com.nomina.application.dto.command.GeneratePayrollCommand;
 import com.nomina.domain.exceptions.InvalidHoursWorkedException;
@@ -8,8 +7,6 @@ import com.nomina.domain.service.*;
 import com.nomina.domain.vo.HoursWorked;
 import com.nomina.domain.vo.Sales;
 import com.nomina.domain.vo.Seniority;
-import domain.service.*;
-import domain.vo.*;
 import java.time.YearMonth;
 import java.time.temporal.ChronoUnit;
 
